@@ -1,0 +1,2 @@
+DROP INDEX IF EXISTS idx_sessions_uuid;
+ALTER TABLE sessions DROP COLUMN IF EXISTS uuid;
