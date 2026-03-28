@@ -1,2 +1,0 @@
-DROP TABLE IF EXISTS questions;
-DROP TYPE  IF EXISTS difficulty;
