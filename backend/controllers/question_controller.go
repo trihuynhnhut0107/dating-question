@@ -17,12 +17,15 @@ func ListQuestion(c *gin.Context){
 		Search:c.Query("search"),
 		Sort:c.Query("sort"),
 	}
-	questions, nextCursor,err:= services.GetQuestionsByCursor(filter)
-	if err!=nil{
-		c.JSON(http.StatusOK, gin.H{
-			"data":questions,
-			"next_cursor":nextCursor,
-			"limit": limit,
-		})
+	questions, nextCursor, err := services.GetQuestionsByCursor(filter)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
 	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"data":        questions,
+		"next_cursor": nextCursor,
+		"limit":       limit,
+	})
 }

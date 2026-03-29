@@ -3,10 +3,12 @@ package routes
 import (
 	"dating-question/controllers"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 func RegisterRoutes(r *gin.Engine){
 	api:=r.Group("/api")
+	api.Use(cors.Default())
 	{
 		v1:= api.Group("/v1")
 		{
