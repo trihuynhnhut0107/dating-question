@@ -10,6 +10,6 @@ type Session struct{
 	ID uuid.UUID `gorm:"type:uuid;primaryKey;default:gen_random_uuid()" json:"id"`
 	Name *string `json:"name"` 
 	Questions []Question `gorm:"many2many:session_questions;" json:"questions"`
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }

@@ -1,4 +1,3 @@
-<!-- 4.5 app/pages/questions/index.vue - Infinite Scroll Page -->
 <script setup lang="ts">
 import { useQuestions } from "~/composables/useQuestions";
 import type { QuestionDto } from "~/types/question";
@@ -49,16 +48,14 @@ const loadMore = async () => {
       <QuestionsQuestionCard
         v-for="q in questions"
         :key="q.id"
-        :content="q.content"
-      />
+        :content="q.content" />
     </div>
 
     <!-- Infinite Scroll Trigger -->
     <SharedLazyLoader
       :hasNext="hasNext"
       :pending="pending"
-      @loadMore="loadMore"
-    />
+      @loadMore="loadMore" />
   </div>
 </template>
 
@@ -70,7 +67,7 @@ const loadMore = async () => {
 }
 .questions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  columns: 1;
   gap: 1.5rem;
   margin-top: 2rem;
 }

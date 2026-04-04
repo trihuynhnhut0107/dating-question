@@ -4,8 +4,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style>
 /* Global styles */
@@ -15,7 +14,7 @@ body {
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
-  background-color: #f8f9fa;
-  color: #2d3436;
+  background-color: #0b132b;
+  color: #6fffe9;
 }
 </style>
