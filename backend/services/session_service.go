@@ -5,14 +5,18 @@ import (
 	"dating-question/models"
 )
 
-func CreateSession(name *string, clientIp *string) (*models.Session, error) {
+func CreateSession(name *string, clientIp *string, questionNumber *int) (*models.Session, error) {
 	var tempName string
 
-	if name != nil {
+	if name != nil && *name != "" {
 		tempName = *name
 	}
 
-	if clientIp != nil {
+	if clientIp != nil && *clientIp != "" {
+		if tempName != "" {
+			tempName += "-"
+		}
+
 		tempName += *clientIp
 	}
 
@@ -24,6 +28,10 @@ func CreateSession(name *string, clientIp *string) (*models.Session, error) {
 	}
 
 	if err := config.DB.Create(session).Error; err != nil {
+		return nil, err
+	}
+
+	if err := AddRandomQuestionsIntoSession(session.ID, questionNumber); err != nil {
 		return nil, err
 	}
 

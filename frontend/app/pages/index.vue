@@ -1,3 +1,23 @@
+<script setup lang="ts">
+const loading = ref(false);
+const { createSession } = useSessions();
+
+async function startSession() {
+  loading.value = true;
+
+  try {
+    const { data, error } = await createSession({ name: "Something" });
+    if (data.value) {
+      await navigateTo(`/session/${data.value.id}`);
+    }
+  } catch (err) {
+    console.error("Failed to create session:", err);
+  } finally {
+    loading.value = false;
+  }
+}
+</script>
+
 <template>
   <div class="home-container">
     <h1>Dating Questions</h1>
@@ -6,14 +26,10 @@
       <NuxtLink to="/questions" class="btn btn-primary"
         >Browse All Questions</NuxtLink
       >
-      <!-- <NuxtLink to="/session" class="btn btn-secondary"
-        >Random Session</NuxtLink
-      > -->
+      <button class="btn btn-create-session">Random Session</button>
     </div>
   </div>
 </template>
-
-<script setup lang="ts"></script>
 
 <style scoped>
 .home-container {
@@ -35,6 +51,11 @@
   color: white;
 }
 .btn-secondary {
+  background: #2f3542;
+  color: white;
+}
+
+.btn-create-session {
   background: #2f3542;
   color: white;
 }
