@@ -13,12 +13,18 @@ node_modules
 logs
 *.log
 
-# Misc
-.DS_Store
-.fleet
-.idea
+# Lock files
+bun.lock
+bun.lockb
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
 
-# Local env files
+# Editor-specific files
+.DS_Store
+.vscode
+.idea
+.fleet
 .env
 .env.*
 !.env.example

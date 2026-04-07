@@ -20,7 +20,15 @@ go.work.sum
 
 # Env files
 .env
+.env.*
+!.env.example
 
 # Toolings
 tmp/
 bin/
+
+# Editor-specific files
+.DS_Store
+.vscode
+.idea
+.fleet
