@@ -13,4 +13,9 @@ export default defineNuxtConfig({
       apiBaseUrl: "http://localhost:8080/api/v1",
     },
   },
+  vite: {
+    optimizeDeps: {
+      include: ["@vue/devtools-core", "@vue/devtools-kit"],
+    },
+  },
 });

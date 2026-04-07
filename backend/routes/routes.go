@@ -1,6 +1,8 @@
 package routes
 
 import (
+	"time"
+
 	"dating-question/controllers"
 
 	"github.com/gin-contrib/cors"
@@ -8,8 +10,18 @@ import (
 )
 
 func RegisterRoutes(r *gin.Engine) {
+	println("Registering routes with robust CORS configuration...")
+	// CORS configuration
+	r.Use(cors.New(cors.Config{
+		AllowAllOrigins:  true,
+		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "Accept", "Authorization", "X-Requested-With"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
+
 	api := r.Group("/api")
-	api.Use(cors.Default())
 	{
 		v1 := api.Group("/v1")
 		{

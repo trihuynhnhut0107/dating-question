@@ -25,7 +25,5 @@ func CreateSession(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, gin.H{
-		"data": session,
-	})
+	c.JSON(http.StatusCreated, session)
 }
