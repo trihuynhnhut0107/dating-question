@@ -1,13 +1,14 @@
-import type { QuestionDto } from "./question";
+import type { QuestionResponseDto } from "./question";
 
 export interface CreateSessionDto {
-  name: string;
+  name?: string;
+  question_number?: number;
 }
 
-export interface SessionDto {
+export interface SessionResponseDto {
   id: string;
   name: string;
-  questions: QuestionDto[];
-  createdAt: Date;
-  updatedAt: Date;
+  questions: QuestionResponseDto[];
+  created_at: string;
+  updated_at: string;
 }
